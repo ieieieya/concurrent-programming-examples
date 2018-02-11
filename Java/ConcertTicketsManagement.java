@@ -45,10 +45,23 @@ public class ConcertTicketsManagement {
 						System.out.println("Tickets remaining: " + ticketsRemaining);
 						income += rand * PRICE_PER_TICKET;
 						System.out.println("Income: " + income);
+					} else if (ticketsRemaining > 0) {
+						String temp = "ticket";
+						if (ticketsRemaining > 1) {
+							temp += "s";
+						}
+						System.out.println("Fan " + id + " wants " + rand + " tickets. But only " +
+								ticketsRemaining + " " + temp + " available.");
+						System.out.println("Fan " + id + " purchased " + ticketsRemaining + " tickets");
+						income += ticketsRemaining * PRICE_PER_TICKET;
+						ticketsRemaining = 0;
+						System.out.println("Tickets remaining: " + ticketsRemaining);
+						System.out.println("Income: " + income);
 					} else {
 						System.out.println("\nExiting... \n Tickets Remaining: " + ticketsRemaining);
 						System.exit(1);
 					}
+					sleep(r.nextInt(1000));
 				}
 				catch (InterruptedException e) {
 					e.printStackTrace();
@@ -61,4 +74,3 @@ public class ConcertTicketsManagement {
 	}
 
 }
-
